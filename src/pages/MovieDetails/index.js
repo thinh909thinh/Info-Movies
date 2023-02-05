@@ -9,7 +9,8 @@ function MovieDetailsPage(props) {
   const { showModal, movie } = props;
   // console.log("m", showModal);
   const dispatch = useDispatch();
-  const handleCloseModal = () => dispatch(setMovieDetails(null));
+  // console.log("dispatch", dispatch);
+  const handleCloseModal = () => dispatch(setMovieDetails(""));
   // useEffect((handleCloseModal = () => dispatch(setMovieDetails(null))));
   return (
     <MovieDetailsWrapper>
@@ -34,15 +35,12 @@ function MovieDetailsPage(props) {
           <div className="infoMovie">
             <h1 className="title">{movie && (movie.title || movie.name)}</h1>
             <p className="statistical">
-              <span className="rating">
-                Rating: {movie && movie.vote_average * 10}%
-              </span>
               <span className="popularity">
                 Popularity: {movie && movie.popularity}
               </span>
             </p>
             <p className="releaseDate">
-              Release date:{" "}
+              Release date :
               {movie &&
                 (moment(movie.release_date).format("DD/MM/YYYY") ||
                   moment(movie.first_air_date).format("DD/MM/YYYY"))}
